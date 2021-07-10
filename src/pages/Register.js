@@ -57,7 +57,7 @@ function Register() {
     }
     
     return (
-        <div className='form-section'>
+        <div className='reg-form-section'>
             <form onSubmit={handleSubmit(handleRegister)} className='register-form' >
                 <div className='reg-heading'>
                     <h1>Register</h1>

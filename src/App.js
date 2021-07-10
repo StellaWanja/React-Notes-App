@@ -41,7 +41,7 @@ function App() {
             <Note />
           </Route>
 
-          <Route exact path='/add-new-item'>
+          <Route exact path='/form'>
             <Form />
           </Route>
 

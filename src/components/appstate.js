@@ -12,10 +12,23 @@ function reducer(appstate, action) {
 
     //add new item
     if (action.type === 'ADD_ITEM') {
-        //to prevent addition of duplicate items, check if index is same, and if they aren't hte same, add item
-        const index = appStateCopy.notes.findIndex(el => el.id === action.payload.id);
-        if (index === -1) {
-            appStateCopy.notes.unshift(action.payload);
+        if (appStateCopy.isEditing) {
+            appStateCopy.notes = appStateCopy.notes.map(note => {
+                if (note.id === appStateCopy.currentlyEditing) {
+					note.title = appStateCopy.title;
+                    note.description = appStateCopy.description;
+                    localStorage.setItem('notes', JSON.stringify(appStateCopy.notes))
+				}
+                return note;
+            })
+            appStateCopy.isEditing = false;
+        } else {
+            //to prevent addition of duplicate items, check if index is same, and if they aren't the same, add item
+            const index = appStateCopy.notes.findIndex(el => el.id === action.payload.id);
+            if (index === -1) {
+                appStateCopy.notes.unshift(action.payload);
+                localStorage.setItem('notes', JSON.stringify(appStateCopy.notes))
+            }
         }
     }
 
@@ -47,35 +60,44 @@ function reducer(appstate, action) {
 		appStateCopy.description = action.payload;
 	}
 
+    //delete item
+    if (action.type === 'DELETE_NOTE') {
+        appStateCopy.notes = appStateCopy.notes.filter(note => note.id !== action.payload.id);
+
+        let items = JSON.parse(localStorage.getItem('notes'));
+        let newItem = items.filter(item => item.id !== action.payload.id);
+        localStorage.setItem('notes', JSON.stringify(newItem))
+    }
+
+    if (action.type === 'EDIT_NOTE') {
+        appStateCopy.title = action.payload.title;
+		appStateCopy.description = action.payload.description;
+		appStateCopy.isEditing = true;
+		appStateCopy.currentlyEditing = action.payload.id;
+    }
+
     return appStateCopy;
+}
+
+const getLocalStorage = () => {
+  let listNotes = localStorage.getItem('notes');
+  if (listNotes) {
+    return JSON.parse(localStorage.getItem('notes'))
+  }
+  else {
+    return []
+  }
 }
 
 //initialState object
 const initialState = {
-    notes: [
-        {
-			id: 1,
-			title: 'Item 1',
-			description:
-				'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, totam!',
-		},
-		{
-			id: 2,
-			title: 'Item 2',
-			description:
-				'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, totam!',
-        },
-        {
-			id: 3,
-			title: 'Item 3',
-			description:
-				'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime, totam!',
-		},
-    ], //notes state stored in array
+    notes: getLocalStorage(), //notes state stored in array
     isUserLoggedIn: false, //state to check whether user is logged in
     userData: null, //check whether user data is null on logout
     title: '',
-    description: ''
+    description: '',
+    isEditing: false,
+	currentlyEditing: '',
 }
 
 function AppState({children}) {

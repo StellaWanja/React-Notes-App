@@ -7,21 +7,25 @@ ul{
 .note-div{
     margin: 20px;
     list-style-type: none;
-    background-color: #545C7E;
-    width: 250px;
+    width: 300px;
     padding: 20px;
     text-align: justify;
     cursor: pointer;
-    color: #fefefe;
+    border-radius: 5px;
+    color: #000;
+    background-color: #f0823a;
 }
 
 .note-div h2{
     text-align: center;
     margin-bottom: 10px;
+    border-bottom: 4px solid #000;
 }
 
 .note-div p{
     font-weight: 500;
+    font-size: 0.9em;
+    overflow-wrap: break-word;
 }
 
 .note{
@@ -33,8 +37,9 @@ ul{
 }
 
 .note-item{
-    background-color: #545C7E;
-    color: #fefefe;
+    background-color: #f0823a;
+    color: #000;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,14 +47,18 @@ ul{
     border-radius: 10px;
 }
 
-.note-item h2, .note-item p{
+.note-item h2{
     font-weight: 500;
     text-align: center;
+    border-bottom: 3px solid #000;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
 }
 
-.note-item h2{
-    border-bottom: 3px solid #fefefe;
-    margin-bottom: 10px;
+.note-item p {
+    font-weight: 500;
+    text-align: center;
+    overflow-wrap: break-word;
 }
 
 .note-btn{
@@ -61,4 +70,17 @@ ul{
 
 .delete-btn:hover, .edit-btn:hover{
     color: #ABB2D9;
+}
+
+.add-note-btn{
+    font-size: 3em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #f0823a;
+    background-color: #fefefe;
+}
+
+.add-note-btn:hover{
+    opacity: 0.8;
 }

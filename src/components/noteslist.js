@@ -7,7 +7,7 @@ function Noteslist() {
     const context = useContextGetter();
 
     return (
-        <ul>
+        <ul >
             {/* map through items to access single note for display */}
 
             {context.state.notes.map((note, index) => {

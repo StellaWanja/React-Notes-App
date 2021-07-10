@@ -5,11 +5,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fefefe;
+    color: #000000;
 }
 
 h1{
     text-align: center;
+    color: #000000;
 }
 
 .home-links{
@@ -22,10 +23,10 @@ h1{
 }
 
 .register-link{
-    color: #292B43;
-    background-color: #ABB2D9;
+    color: #FEFEFE;
+    background-color: #f0823a;
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-weight: 500;
     margin-right: 20px;
 }
@@ -35,7 +36,7 @@ h1{
 }
 
 .login-link{
-    color: #fefefe;
+    color: #000000;
 }
 
 .login-link:hover{

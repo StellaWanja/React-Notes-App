@@ -1,22 +1,30 @@
 import useContextGetter from "../hooks/contextGetter";
-import { FaTrash, FaEdit } from 'react-icons/fa'; //import react icons
+import { useLayoutEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import '../styles/notes.css';
 
 function Note() {
 
     const context = useContextGetter();
+    const history = useHistory();
+
+    //prevent user from getting to notes page if already logged out
+    //changes on context.state and history change
+    useLayoutEffect(() => {
+        if (!context.state.isUserLoggedIn) {
+            //take back to login page
+            history.push('/login')
+        }
+    }, [context.state, history])
 
     return (
         <div className='note'>
             <div className='note-item'>
                 <h2>{context.state.title}</h2>
                 <p>{context.state.description}</p>
-                <div className='note-btn'>
-                    {/* react icons for delete and edit */}
-                    <FaTrash className='delete-btn' />
-                    <FaEdit className='edit-btn' />
-                </div>               
             </div>
+            <Link to='/notes'>Go back</Link>
         </div>
     )
 }

@@ -1,13 +1,9 @@
 import { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router';
+import { MdAddCircle } from 'react-icons/md';
 import useContextGetter from '../hooks/contextGetter';
 import Noteslist from './noteslist';
-
-const btnStyle = {
-    padding: '10px',
-    fontSize: '1em',
-    cursor: 'pointer',
-}
+import '../styles/notes.css';
 
 function Notes() {
 
@@ -24,15 +20,17 @@ function Notes() {
     }, [context.state, history])
 
     const handleAddItem = () => {
-        history.push('/add-new-item');
+        history.push('/form');
     }
 
     return (
         <div style={{textAlign:'center'}}>
             <Noteslist />
-            <button onClick={handleAddItem} style={btnStyle}>Add Item</button>
+            <button onClick={handleAddItem} className='add-note-btn'><MdAddCircle /></button>
         </div>
     )
 }
 
 export default Notes;
+
+

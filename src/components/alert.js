@@ -1,9 +1,10 @@
 import React from 'react';
 
 const style = {
-    color: 'orangered',
+    color: '#e7604b',
     fontWeight: 500,
-    textAlign:'center'
+    textAlign:'center',
+    marginBottom: '10px'
 }
 
 function Alert({error}) {

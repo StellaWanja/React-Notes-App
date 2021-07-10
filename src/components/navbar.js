@@ -13,16 +13,14 @@ function Navbar() {
 
     return (
         <nav className='navbar'>
+            
+            <h3 className='logo'>Notes App</h3>
+
             {/* if user is logged in, then navbar shows notes and logout link */}
-            {context.state.isUserLoggedIn ? (
+            {context.state.isUserLoggedIn && (
                 <>
                     <Link to='/notes' className='notes-link'>Notes</Link>
                     <span onClick={logout} className='logout-link'>Log Out</span>
-                </>
-            ) : (
-                <>
-                        {/* else shows app title  */}
-                    <h3 className='logo'>Notes App</h3> 
                 </>
             )}
 

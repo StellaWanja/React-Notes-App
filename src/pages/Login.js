@@ -52,7 +52,7 @@ function Login() {
     }
 
     return (
-        <div className='form-section'>
+        <div className='login-form-section'>
             <form onSubmit={handleSubmit(handleLogin)} className='login-form'>
             <div className='login-heading'>
                 <h1>Login</h1>
