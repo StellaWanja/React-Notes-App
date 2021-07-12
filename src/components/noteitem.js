@@ -29,7 +29,7 @@ function NoteItem({ note, index }) {
         <li className='note-div' index={note.id} >
             <h2>{note.title}</h2>
             <p>{note.description}</p>
-            <p  onClick={handleItem}>Click here for more</p>
+            <p className='more-link' onClick={handleItem}>Click here for more</p>
             <div className='note-btn'>
                 {/* react icons for delete and edit */}
                 <FaTrash onClick={deleteNote} className='delete-btn' />

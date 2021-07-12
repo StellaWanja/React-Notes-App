@@ -1,6 +1,7 @@
 import useContextGetter from "../hooks/contextGetter";
 import { useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import { useHistory } from 'react-router';
 import '../styles/notes.css';
 
@@ -24,7 +25,7 @@ function Note() {
                 <h2>{context.state.title}</h2>
                 <p>{context.state.description}</p>
             </div>
-            <Link to='/notes'>Go back</Link>
+            <Link to='/notes' className='back-link'><FaArrowLeft /> Go back</Link>
         </div>
     )
 }
